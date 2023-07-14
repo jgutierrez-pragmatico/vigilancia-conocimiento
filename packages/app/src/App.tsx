@@ -112,6 +112,7 @@ import { PuppetDbPage } from '@backstage/plugin-puppetdb';
 import { DevToolsPage } from '@backstage/plugin-devtools';
 import { customDevToolsPage } from './components/devtools/CustomDevToolsPage';
 import { CatalogUnprocessedEntitiesPage } from '@backstage/plugin-catalog-unprocessed-entities';
+import TechFormPage from "./pages/form";
 
 const app = createApp({
   apis,
@@ -270,6 +271,10 @@ const routes = (
     <Route
       path="/tech-radar"
       element={<TechRadarPage width={1500} height={800} />}
+    />
+    <Route
+      path="/form"
+      element={<TechFormPage/>}
     />
     <Route path="/graphiql" element={<GraphiQLPage />} />
     <Route path="/lighthouse" element={<LighthousePage />} />

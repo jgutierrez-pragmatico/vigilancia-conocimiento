@@ -56,4 +56,4 @@ The plugin is configurable either via props or the select elements on the page.
 
 If project configuration is provided via props, the select elements are disabled. It is also possible to omit features from the page via props, as well as attaching callbacks for successful executions.
 
-See the plugin's dev folder (`dev/index.tsx`) to see some examples.
+See the plugin's dev folder (`dev/index.ts`) to see some examples.

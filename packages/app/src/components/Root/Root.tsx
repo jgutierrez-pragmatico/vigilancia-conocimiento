@@ -18,6 +18,7 @@ import React, { PropsWithChildren } from 'react';
 import { makeStyles } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import RuleIcon from '@material-ui/icons/AssignmentTurnedIn';
+import EditNoteIcon from '@material-ui/icons/EditAttributes';
 import MapIcon from '@material-ui/icons/MyLocation';
 import LayersIcon from '@material-ui/icons/Layers';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
@@ -157,7 +158,9 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarDivider />
         <SidebarScrollWrapper>
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
+          <SidebarItem icon={EditNoteIcon} to="form" text="Form" />
           <SidebarItem icon={RuleIcon} to="lighthouse" text="Lighthouse" />
+
           <SidebarItem
             icon={MoneyIcon}
             to="cost-insights"
