@@ -1,3 +1,8 @@
+Flujo:
+
+![image](https://github.com/jgutierrez-pragmatico/vigilancia-conocimiento/assets/117243510/e8ea6719-b19e-49a3-8148-46e280f4fe21)
+
+
 [![headline](docs/assets/headline.png)](https://backstage.io/)
 
 # [Backstage](https://backstage.io)
