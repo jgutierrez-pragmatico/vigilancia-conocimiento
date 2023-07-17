@@ -21,6 +21,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {useEffect} from "react";
+import {useServiceTechRadar} from "../../api/services";
 
 function createData(
   name: string,
@@ -41,6 +43,15 @@ const rows = [
 ];
 
 const CustomTable = ()=> {
+  const {getEntries} = useServiceTechRadar()
+  const initComponent = async ()=>{
+    const response = await getEntries();
+
+    console.log({response})
+  }
+  useEffect(()=>{
+    initComponent();
+  },[])
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
