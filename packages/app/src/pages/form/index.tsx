@@ -17,6 +17,7 @@ import React from 'react'
 import {Box, Button, Modal} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import TechForm from "../../components/Form";
+import Table from "../../components/Table";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -38,7 +39,6 @@ const TechFormPage = ()=>{
   const handleClose = () => setOpen(false);
   return (
     <div>
-
     <h1>Tech Form page</h1>
   <Button onClick={handleOpen}>Open Form</Button>
   <Modal
@@ -59,6 +59,7 @@ const TechFormPage = ()=>{
 
     </Box>
   </Modal>
+      <Table/>
     </div>
   )
 }

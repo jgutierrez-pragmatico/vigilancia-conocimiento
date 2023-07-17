@@ -13,16 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, {useEffect} from 'react'
-import TextField from "@material-ui/core/TextField";
-import {Button, TextareaAutosize} from "@material-ui/core";
-
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
+import React from 'react'
+import {Button,TextField, Select, InputLabel, MenuItem, FormControl} from "@material-ui/core";
 import useTechForm from "../../controllers/techForm";
 
+const style = {
+  marginTop:"1rem"
+}
 const TechForm = ()=>{
   const [faseSelect, setFase] = React.useState('');
   const [kcSelect, setKC] = React.useState('');
@@ -31,9 +28,8 @@ const TechForm = ()=>{
   const {selectData:{fases,kc,chapter}} = useTechForm();
   return (
     <div>
-      <FormControl fullWidth>
-        <div>
-          <InputLabel id="kc-label">KC</InputLabel>
+      <FormControl fullWidth style={style}>
+          <InputLabel id="kc-label" htmlFor="kc">KC</InputLabel>
           <Select
             labelId="kc-label"
             id="kc"
@@ -44,9 +40,8 @@ const TechForm = ()=>{
           >
             {kc.map((object:any,index)=><MenuItem value={object.id} key={`kc${index}`}>{object.nombre}</MenuItem>)}
           </Select>
-
-        </div>
-        <div>
+      </FormControl>
+        <FormControl fullWidth style={style}>
           <InputLabel id="chapter-label">Chapter</InputLabel>
           <Select
             labelId="chapter-label"
@@ -58,26 +53,27 @@ const TechForm = ()=>{
           >
             {chapter.map((object:any,index)=><MenuItem value={object.id} key={`kc${index}`}>{object.nombre}</MenuItem>)}
           </Select>
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField type="email" id="email" label="Responsable (Correo)" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField  id="tema" label="Tema (Tipificacion)" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField  id="main-tema" label="Tema Pricipal" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField  id="sub-tema" label="Sub Tema" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField type="date" id="sub-tema" label="Dead line de obsolencia (Fecha)" variant="outlined" fullWidth   />
-        </div>
-        <div>
-          <TextField type="date" id="sub-tema" label="Fecha para pasar a la siguiete fase" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
+          <InputLabel htmlFor="date2">Fecha para pasar a la siguiete fase</InputLabel>
+          <TextField type="date" id="date2" variant="outlined" fullWidth   />
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <InputLabel id="fase-label">Fase</InputLabel>
           <Select
             labelId="fase-label"
@@ -89,28 +85,28 @@ const TechForm = ()=>{
           >
             {fases.map((object:any,index)=><MenuItem value={object.id} key={`kc${index}`}>{object.nombre}</MenuItem>)}
           </Select>
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField  id="link" label="Link Ruta habilitacion" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField id="artefacto" label="Artefacto" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField id="retos" label="Retos Asincronos" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField id="charlas" label="Charlas" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField id="solicitud" label="Solicitud de priorizacion" variant="outlined" fullWidth   />
-        </div>
-        <div>
+        </FormControl>
+        <FormControl fullWidth style={style}>
           <TextField id="necesidades" label="Necesidades" variant="outlined" fullWidth   />
-        </div>
+        </FormControl>
+      <FormControl fullWidth style={style}>
         <Button>Enviar</Button>
       </FormControl>
-
     </div>
   )
 }
