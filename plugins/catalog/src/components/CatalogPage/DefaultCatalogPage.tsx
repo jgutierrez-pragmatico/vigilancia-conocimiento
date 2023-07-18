@@ -82,7 +82,7 @@ export function DefaultCatalogPage(props: DefaultCatalogPageProps) {
             title={createButtonTitle}
             to={createComponentLink && createComponentLink()}
           />
-          <SupportButton>All your software catalog entities</SupportButton>
+          <SupportButton>Soporte</SupportButton>
         </ContentHeader>
         <EntityListProvider>
           <CatalogFilterLayout>

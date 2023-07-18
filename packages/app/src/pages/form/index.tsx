@@ -13,11 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react'
-import {Box, Button, Modal} from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import TechForm from "../../components/Form";
-import Table from "../../components/Table";
+
+export interface DefaultCatalogPageProps {
+  initiallySelectedFilter?: UserListFilterKind;
+  columns?: TableColumn<CatalogTableRow>[];
+  actions?: TableProps<CatalogTableRow>['actions'];
+  initialKind?: string;
+  tableOptions?: TableProps<CatalogTableRow>['options'];
+  emptyContent?: ReactNode;
+  ownerPickerMode?: EntityOwnerPickerProps['mode'];
+}
+
+import { Box, Button, Modal } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import TechForm from '../../components/Form';
+import Table from '../../components/Table';
+import {
+  Content,
+  ContentHeader,
+  CreateButton,
+  PageWithHeader,
+  SupportButton,
+  TableColumn,
+  TableProps,
+} from '@backstage/core-components';
+import { configApiRef, useApi, useRouteRef } from '@backstage/core-plugin-api';
+import {
+  CatalogFilterLayout,
+  EntityLifecyclePicker,
+  EntityListProvider,
+  EntityProcessingStatusPicker,
+  EntityOwnerPicker,
+  EntityTagPicker,
+  EntityTypePicker,
+  UserListFilterKind,
+  UserListPicker,
+  EntityKindPicker,
+  EntityNamespacePicker,
+  EntityOwnerPickerProps,
+} from '@backstage/plugin-catalog-react';
+import React, { ReactNode } from 'react';
+import { createComponentRouteRef } from '../../routes';
+import { CatalogTable, CatalogTableRow } from '../CatalogTable';
+import { useCatalogPluginOptions } from '../../options';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -29,38 +67,44 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  overflow:"hidden",
-  overflowY:"visible",
-  height:"100%",
+  overflow: 'hidden',
+  overflowY: 'visible',
+  height: '100%',
 };
-const TechFormPage = ()=>{
+const TechFormPage = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <div>
-    <h1>Tech Form page</h1>
-  <Button onClick={handleOpen}>Open Form</Button>
-  <Modal
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="modal-modal-title"
-    aria-describedby="modal-modal-description"
-  >
-    <Box sx={style}>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
-        Registro
-      </Typography>
-      <div style={{
-        overflow:"scroll"
-      }}>
-        <TechForm/>
-      </div>
+    <PageWithHeader title="Vigilancia de conocimiento" themeId="home">
+      <Content>
+        <ContentHeader title="">
+          <CreateButton title="Agregar" to="Agregar" />
+        </ContentHeader>
+        <Button onClick={handleOpen}>Open Form</Button>
 
-    </Box>
-  </Modal>
-      <Table/>
-    </div>
-  )
-}
-export default TechFormPage
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Registro
+            </Typography>
+            <div
+              style={{
+                overflow: 'scroll',
+              }}
+            >
+              <TechForm />
+            </div>
+          </Box>
+        </Modal>
+        <Table />
+      </Content>
+    </PageWithHeader>
+  );
+};
+export default TechFormPage;
