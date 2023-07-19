@@ -227,6 +227,7 @@ export class SampleTechRadarApi implements TechRadarApi {
             .replace(/\s/g, '')
             .toLocaleLowerCase('en-US');
           obj.key = obj.key + obj.id;
+          obj.timeline[0].date = new Date('2020-08-06');
           return obj;
         });
 

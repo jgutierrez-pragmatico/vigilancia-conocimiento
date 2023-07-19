@@ -160,7 +160,7 @@ export interface RadarEntrySnapshot {
   /**
    * Point in time when change happened
    */
-  date: Date;
+  date: string;
   /**
    * ID of {@link RadarRing}
    */
