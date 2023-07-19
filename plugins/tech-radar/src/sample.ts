@@ -21,18 +21,26 @@ import {
   TechRadarLoaderResponse,
   TechRadarApi,
 } from './api';
+
 const rings = new Array<RadarRing>();
-rings.push({ id: 'Experimientando', name: 'Experimientando', color: '#5BA300' });
+rings.push({
+  id: 'Experimientando',
+  name: 'Experimientando',
+  color: '#5BA300',
+});
 rings.push({ id: 'Escalando', name: 'Escalando', color: '#009EB0' });
 rings.push({ id: 'Explorando', name: 'Explorando', color: '#C7BA00' });
 rings.push({ id: 'Explotando', name: 'Explotando', color: '#E09B96' });
 
 const quadrants = new Array<RadarQuadrant>();
 // quadrants.push({ id: 'infrastructure', name: 'Infrastructure' });
-quadrants.push({ id: 'TEST', name: 'TEST' });
-quadrants.push({ id: 'Data  Science', name: 'Data  Science' });
-quadrants.push({ id: 'People - Centered Design', name: 'People - Centered Design' });
-quadrants.push({ id: 'Computer  Science', name: "Computer  Science" });
+quadrants.push({ id: 'businessdevelopment', name: 'Business Development' });
+quadrants.push({ id: 'datascience', name: 'Data Science' });
+quadrants.push({
+  id: 'people-centereddesign',
+  name: 'People - Centered Design',
+});
+quadrants.push({ id: 'computerscience', name: 'ComputerScience' });
 
 const entries = new Array<RadarEntry>();
 
@@ -205,15 +213,30 @@ export const mock: TechRadarLoaderResponse = {
 export class SampleTechRadarApi implements TechRadarApi {
   async load() {
     try {
-      const response = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries')
-      const data = await response.json()
+      const response = await fetch(
+        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries',
+      );
+      const data = await response.json();
+      const dataReplace = data
+        .filter(
+          (obj: any) =>
+            obj.key && obj.timeline[0].ringId && obj.quadrant.trim() !== '',
+        )
+        .map((obj: any) => {
+          obj.quadrant = obj.quadrant
+            .replace(/\s/g, '')
+            .toLocaleLowerCase('en-US');
+          obj.key = obj.key + obj.id;
+          return obj;
+        });
+
       // const response2 = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/kc')
       // const data2 = await response2.json()
-      mock.entries = data
+      mock.entries = dataReplace;
       // mock.quadrants = data2.map((d:any)=>({id:d.id,name:d.nombre}))
-    }catch (e) {
+    } catch (e) {
       // eslint-disable-next-line no-console
-      console.log(e)
+      console.log(e);
     }
     return mock;
   }
