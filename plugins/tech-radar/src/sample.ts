@@ -40,7 +40,7 @@ quadrants.push({
   id: 'people-centereddesign',
   name: 'People - Centered Design',
 });
-quadrants.push({ id: 'computerscience', name: 'ComputerScience' });
+quadrants.push({ id: 'computerscience', name: 'Computer Science' });
 
 const entries = new Array<RadarEntry>();
 

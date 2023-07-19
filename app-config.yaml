@@ -27,7 +27,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://alb-1322489955.us-east-1.elb.amazonaws.com:7007
+  baseUrl: http://localhost:7007
   listen:
     port: 7007
   database:

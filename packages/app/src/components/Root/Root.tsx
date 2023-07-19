@@ -80,10 +80,14 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarScrollWrapper>
           <SidebarItem icon={RuleIcon} to="form" text="Conocimientos" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
+          <SidebarItem
+            icon={Score}
+            to="https://lookerstudio.google.com/u/0/reporting/ff7d83d9-5d84-472b-a898-bfb5af46a283/page/qTRUD"
+            text="Road Map"
+          />
           {/* <SidebarItem icon={Score} to="roadmap" text="Road Map" /> */}
         </SidebarScrollWrapper>
         <SidebarDivider />
-        <Shortcuts allowExternalLinks />
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />
