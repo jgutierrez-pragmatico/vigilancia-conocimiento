@@ -311,8 +311,8 @@ auth:
   providers:
     google:
       development:
-        clientId: 1018901859117-32fpnfb341dlfbg6jdmo3jekrgeu82kl.apps.googleusercontent.com
-        clientSecret: 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
+        clientId: 762455078659-ht22j7l2ijlv3483mq3tv5p3vu8uqlch.apps.googleusercontent.com
+        clientSecret: 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
     github:
       development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}

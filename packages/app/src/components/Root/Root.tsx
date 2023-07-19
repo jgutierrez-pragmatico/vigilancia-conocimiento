@@ -16,24 +16,15 @@
 
 import React, { PropsWithChildren } from 'react';
 import { makeStyles } from '@material-ui/core';
-import HomeIcon from '@material-ui/icons/Home';
 import RuleIcon from '@material-ui/icons/AssignmentTurnedIn';
-import EditNoteIcon from '@material-ui/icons/EditAttributes';
 import MapIcon from '@material-ui/icons/MyLocation';
-import LayersIcon from '@material-ui/icons/Layers';
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
-import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
-import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
-import MoneyIcon from '@material-ui/icons/MonetizationOn';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
-import { GraphiQLIcon } from '@backstage/plugin-graphiql';
 import {
   Settings as SidebarSettings,
   UserSettingsSignInAvatar,
 } from '@backstage/plugin-user-settings';
-import { SidebarSearchModal } from '@backstage/plugin-search';
 import { Shortcuts } from '@backstage/plugin-shortcuts';
 import {
   Sidebar,
@@ -46,13 +37,8 @@ import {
   SidebarSpace,
   Link,
   useSidebarOpenState,
-  SidebarSubmenu,
-  SidebarSubmenuItem,
 } from '@backstage/core-components';
-import { MyGroupsSidebarItem } from '@backstage/plugin-org';
-import { SearchModal } from '../search/SearchModal';
 import Score from '@material-ui/icons/Score';
-import { useApp } from '@backstage/core-plugin-api';
 import BuildIcon from '@material-ui/icons/Build';
 
 const useSidebarLogoStyles = makeStyles({
@@ -92,8 +78,9 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
+          <SidebarItem icon={RuleIcon} to="form" text="Conocimientos" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
-          <SidebarItem icon={EditNoteIcon} to="form" text="Form" />
+          {/* <SidebarItem icon={Score} to="roadmap" text="Road Map" /> */}
         </SidebarScrollWrapper>
         <SidebarDivider />
         <Shortcuts allowExternalLinks />
