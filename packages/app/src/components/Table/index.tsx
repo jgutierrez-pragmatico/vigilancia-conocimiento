@@ -21,7 +21,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useServiceTechRadar} from "../../api/services";
 
 function createData(
@@ -42,13 +42,20 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-const CustomTable = ()=> {
-  const {getEntries} = useServiceTechRadar()
+const CustomTable = ({handleOpen, setForm}:any)=> {
+  const [data, setData] = useState<any>([])
+  const {getEntries, getEntry} = useServiceTechRadar()
   const initComponent = async ()=>{
     const response = await getEntries();
+    setData(response)
 
-    console.log({response})
   }
+  const getData = async (id:string)=>{
+    const response = await getEntry(id)
+    setForm(response)
+    handleOpen()
+  }
+
   useEffect(()=>{
     initComponent();
   },[])
@@ -57,26 +64,25 @@ const CustomTable = ()=> {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>KC</TableCell>
+            <TableCell align="right">Chapter</TableCell>
+            <TableCell align="right">Tipificacion</TableCell>
+            <TableCell align="right">Tema Principal</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row,i) => (
             <TableRow
-              key={row.name}
+              key={row.key+i}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              onClick={()=>getData(row.id)}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.key}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.description}</TableCell>
+              <TableCell align="right">{row.timeline[0].description}</TableCell>
+              <TableCell align="right">{row.title}</TableCell>
             </TableRow>
           ))}
         </TableBody>

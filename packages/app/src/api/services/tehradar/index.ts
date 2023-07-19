@@ -24,6 +24,16 @@ export const useServiceTechRadar = () => {
     }
 
   }
+  const getEntry = async (id:string)=>{
+    try {
+      const response = await fetch(`https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries/${id}`)
+      return await response.json()
+    }catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e)
+    }
+
+  }
   const getKC = async ()=>{
     try {
       const response = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/kc')
@@ -54,10 +64,25 @@ export const useServiceTechRadar = () => {
     }
 
   }
+  const sendForm = async (form:any)=>{
+    try {
+      const response = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries',{
+        method:'POST',
+        body:JSON.stringify(form)
+      })
+      return await response.json()
+    }catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e)
+    }
+
+  }
   return{
     getEntries,
     getKC,
     getChapter,
-    getFases
+    getFases,
+    sendForm,
+    getEntry
   }
 }

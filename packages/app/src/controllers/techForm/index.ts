@@ -18,15 +18,15 @@
 import {useServiceTechRadar} from "../../api/services";
 import {useEffect, useState} from "react";
 
-const useTechForm = ()=>{
+const useTechForm = (initForm:any)=>{
   const [selectData,setSelectData]= useState({
     kc:[],
     chapter:[],
     fases:[]
 
   })
-  const {getKC, getChapter, getFases} = useServiceTechRadar()
-
+  const {getKC, getChapter, getFases, sendForm} = useServiceTechRadar()
+  const [form,setForm] = useState<any>(initForm)
   const initController = async()=>{
     const chapter = await getChapter()
     const kc = await getKC()
@@ -36,12 +36,43 @@ const useTechForm = ()=>{
       kc,
       fases
     })
+
   }
   useEffect(()=>{
     initController()
+    if(form.id_radar){
+      setForm({
+        ...form,
+        siguiente_fase:form.siguiente_fase?.split('T')[0],
+        obsolescencia:form.obsolescencia?.split('T')[0],
+      })
+    }
   },[])
+
+  console.log(form)
+  const onChange = (event:any,number:boolean=false)=>{
+    if(number){
+      setForm({...form,[event.target.name]:parseInt(event.target.value, 10)})
+    }else{
+      setForm({...form,[event.target.name]:event.target.value})
+    }
+
+  }
+  const sendData = async ()=>{
+    try {
+      const response  = await sendForm(form)
+      // eslint-disable-next-line no-console
+      console.log({response})
+    }catch (e) {
+      console.log(e)
+    }
+
+  }
   return {
-    selectData
+    selectData,
+    onChange,
+    form,
+    sendData
   }
 }
 export default useTechForm

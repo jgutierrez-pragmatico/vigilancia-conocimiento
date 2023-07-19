@@ -52,7 +52,7 @@ import {
   EntityNamespacePicker,
   EntityOwnerPickerProps,
 } from '@backstage/plugin-catalog-react';
-import React, { ReactNode } from 'react';
+import React, {ReactNode, useState} from 'react';
 import { createComponentRouteRef } from '../../routes';
 import { CatalogTable, CatalogTableRow } from '../CatalogTable';
 import { useCatalogPluginOptions } from '../../options';
@@ -72,16 +72,24 @@ const style = {
   height: '100%',
 };
 const TechFormPage = () => {
+  const [initform,setform]= useState({});
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true)
+    setform({})
+  };
+  const handleClose = () => {
+    setOpen(false)
+    setform({})
+  };
   return (
     <PageWithHeader title="Vigilancia de conocimiento" themeId="home">
       <Content>
         <ContentHeader title="">
-          <CreateButton title="Agregar" to="Agregar" />
+          <Button onClick={handleOpen}>Agregar</Button>
+          {/*<CreateButton title="Agregar" to="Agregar" onClick={handleOpen}/>*/}
         </ContentHeader>
-        <Button onClick={handleOpen}>Open Form</Button>
+
 
         <Modal
           open={open}
@@ -98,11 +106,11 @@ const TechFormPage = () => {
                 overflow: 'scroll',
               }}
             >
-              <TechForm />
+              <TechForm initForm={initform} handleClose={handleClose}/>
             </div>
           </Box>
         </Modal>
-        <Table />
+        <Table handleOpen={handleOpen} setForm={setform}/>
       </Content>
     </PageWithHeader>
   );
