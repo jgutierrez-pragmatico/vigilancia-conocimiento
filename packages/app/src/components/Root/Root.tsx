@@ -84,6 +84,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
             icon={Score}
             to="https://lookerstudio.google.com/u/0/reporting/ff7d83d9-5d84-472b-a898-bfb5af46a283/page/qTRUD"
             text="Road Map"
+            target="_blank"
           />
           {/* <SidebarItem icon={Score} to="roadmap" text="Road Map" /> */}
         </SidebarScrollWrapper>
