@@ -21,19 +21,18 @@ import {
   TechRadarLoaderResponse,
   TechRadarApi,
 } from './api';
-
 const rings = new Array<RadarRing>();
 rings.push({ id: 'Experimientando', name: 'Experimientando', color: '#5BA300' });
-rings.push({ id: 'trial', name: 'TRIAL', color: '#009EB0' });
-rings.push({ id: 'assess', name: 'ASSESS', color: '#C7BA00' });
-rings.push({ id: 'computer', name: 'Computer Science', color: '#E09B96' });
+rings.push({ id: 'Escalando', name: 'Escalando', color: '#009EB0' });
+rings.push({ id: 'Explorando', name: 'Explorando', color: '#C7BA00' });
+rings.push({ id: 'Explotando', name: 'Explotando', color: '#E09B96' });
 
 const quadrants = new Array<RadarQuadrant>();
 // quadrants.push({ id: 'infrastructure', name: 'Infrastructure' });
-quadrants.push({ id: 'frameworks', name: 'Frameworks' });
-quadrants.push({ id: 'languages', name: 'Languages' });
-quadrants.push({ id: 'process', name: 'Process' });
-quadrants.push({ id: 'Computer  Science', name: "Computer Science" });
+quadrants.push({ id: 'TEST', name: 'TEST' });
+quadrants.push({ id: 'Data  Science', name: 'Data  Science' });
+quadrants.push({ id: 'People - Centered Design', name: 'People - Centered Design' });
+quadrants.push({ id: 'Computer  Science', name: "Computer  Science" });
 
 const entries = new Array<RadarEntry>();
 
@@ -210,8 +209,6 @@ export class SampleTechRadarApi implements TechRadarApi {
       const data = await response.json()
       // const response2 = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/kc')
       // const data2 = await response2.json()
-      // eslint-disable-next-line no-console
-      console.log(data)
       mock.entries = data
       // mock.quadrants = data2.map((d:any)=>({id:d.id,name:d.nombre}))
     }catch (e) {
