@@ -78,7 +78,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
-          <SidebarItem icon={RuleIcon} to="form" text="Conocimientos" />
+          {/* <SidebarItem icon={RuleIcon} to="form" text="Conocimientos" /> */}
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
           <SidebarItem
             icon={Score}

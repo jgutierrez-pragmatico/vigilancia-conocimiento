@@ -34,7 +34,7 @@ rings.push({ id: 'Explotando', name: 'Explotando', color: '#E09B96' });
 
 const quadrants = new Array<RadarQuadrant>();
 // quadrants.push({ id: 'infrastructure', name: 'Infrastructure' });
-quadrants.push({ id: 'businessdevelopment', name: 'Business Development' });
+quadrants.push({ id: 'powerfulteams', name: 'Powerful teams' });
 quadrants.push({ id: 'datascience', name: 'Data Science' });
 quadrants.push({
   id: 'people-centereddesign',
@@ -43,166 +43,6 @@ quadrants.push({
 quadrants.push({ id: 'computerscience', name: 'Computer Science' });
 
 const entries = new Array<RadarEntry>();
-
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 0,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//       description:
-//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
-//     },
-//   ],
-//   key: 'javascript',
-//   id: 'javascript',
-//   title: 'JavaScript',
-//   quadrant: 'languages',
-//   links: [
-//     {
-//       url: 'https://www.javascript.com/',
-//       title: 'Learn more',
-//     },
-//     {
-//       url: 'https://www.typescriptlang.org/',
-//       title: 'TypeScript',
-//     },
-//   ],
-//   description:
-//     'Excepteur **sint** occaecat *cupidatat* non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n```ts\nconst x = "3";\n```\n',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: -1,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//       description:
-//         'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat',
-//     },
-//   ],
-//   key: 'typescript',
-//   id: 'typescript',
-//   title: 'TypeScript',
-//   quadrant: 'languages',
-//   description:
-//     'Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 1,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//       description:
-//         'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-//     },
-//   ],
-//   links: [
-//     {
-//       url: 'https://webpack.js.org/',
-//       title: 'Learn more',
-//     },
-//   ],
-//   key: 'webpack',
-//   id: 'webpack',
-//   title: 'Webpack',
-//   quadrant: 'frameworks',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 0,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//     },
-//   ],
-//   links: [
-//     {
-//       url: 'https://reactjs.org/',
-//       title: 'Learn more',
-//     },
-//   ],
-//   key: 'react',
-//   id: 'react',
-//   title: 'React',
-//   quadrant: 'frameworks',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 0,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//     },
-//   ],
-//   key: 'code-reviews',
-//   id: 'code-reviews',
-//   title: 'Code Reviews',
-//   quadrant: 'process',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 0,
-//       ringId: 'assess',
-//       date: new Date('2020-08-06'),
-//     },
-//   ],
-//   key: 'mob-programming',
-//   id: 'mob-programming',
-//   title: 'Mob Programming',
-//   quadrant: 'process',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       moved: 0,
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//     },
-//   ],
-//   key: 'docs-like-code',
-//   id: 'docs-like-code',
-//   title: 'Docs-like-code',
-//   quadrant: 'process',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       ringId: 'hold',
-//       date: new Date('2020-08-06'),
-//     },
-//   ],
-//   key: 'force-push',
-//   id: 'force-push',
-//   title: 'Force push to master',
-//   quadrant: 'process',
-// });
-// entries.push({
-//   timeline: [
-//     {
-//       ringId: 'adopt',
-//       date: new Date('2020-08-06'),
-//       description: 'long description',
-//     },
-//     {
-//       ringId: 'trial',
-//       date: new Date('2020-07-05'),
-//       description: 'long description',
-//     },
-//   ],
-//   links: [
-//     {
-//       url: 'https://github.com',
-//       title: 'Learn more',
-//     },
-//   ],
-//   key: 'github-actions',
-//   id: 'github-actions',
-//   title: 'GitHub Actions',
-//   quadrant: 'infrastructure',
-// });
 
 export const mock: TechRadarLoaderResponse = {
   entries,
@@ -231,13 +71,9 @@ export class SampleTechRadarApi implements TechRadarApi {
           return obj;
         });
 
-      // const response2 = await fetch('https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/kc')
-      // const data2 = await response2.json()
       mock.entries = dataReplace;
-      // mock.quadrants = data2.map((d:any)=>({id:d.id,name:d.nombre}))
     } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e);
+      // console.warn(e);
     }
     return mock;
   }

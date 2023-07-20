@@ -21,12 +21,12 @@ const RoadMap = () => {
   return (
     <Grid item>
       <InfoCard title="Pragma">
-        {/* <iframe 
+        <iframe
           title="Roadmap de conocimiento"
-          width="100%" 
-          height="100%" 
-          src="https://lookerstudio.google.com/u/0/reporting/ff7d83d9-5d84-472b-a898-bfb5af46a283/page/qTRUD" 
-        /> */}
+          width="100%"
+          height="100%"
+          src="https://lookerstudio.google.com/u/0/reporting/ff7d83d9-5d84-472b-a898-bfb5af46a283/page/qTRUD"
+        />
       </InfoCard>
     </Grid>
   );
