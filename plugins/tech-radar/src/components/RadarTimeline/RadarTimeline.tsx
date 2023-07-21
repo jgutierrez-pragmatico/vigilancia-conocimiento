@@ -15,7 +15,7 @@
  */
 
 import React from 'react';
-import type { EntrySnapshot } from '../../utils/types';
+import type { EntrySnapshot, EntrySnapshotLinks } from '../../utils/types';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -33,6 +33,7 @@ import { MovedState } from '../../api';
 
 export type Props = {
   timeline?: EntrySnapshot[];
+  artefactos?: EntrySnapshotLinks[];
 };
 
 const RadarTimeline = (props: Props): JSX.Element => {
@@ -41,7 +42,7 @@ const RadarTimeline = (props: Props): JSX.Element => {
   return (
     <>
       <Typography variant="h6" gutterBottom>
-        History
+        Trazabilidad
       </Typography>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -97,3 +98,46 @@ const RadarTimeline = (props: Props): JSX.Element => {
 };
 
 export { RadarTimeline };
+
+const RadarTimelineLinks = (props: Props): JSX.Element => {
+  const { artefactos } = props;
+
+  return (
+    <>
+      <Typography variant="h6" gutterBottom>
+        Links
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Link rutra de habilitacion</TableCell>
+              <TableCell align="left">Artefacto</TableCell>
+              <TableCell align="left">Retos asincronos</TableCell>
+              <TableCell align="left">Charlas</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {artefactos?.length === 0 && (
+              <TableRow key="no-timeline">
+                <TableCell component="th" scope="row">
+                  Sin Artefactos
+                </TableCell>
+              </TableRow>
+            )}
+            {artefactos?.map(timeEntry => (
+              <TableRow>
+                <TableCell align="left">{timeEntry.habilitacion}</TableCell>
+                <TableCell align="left">{timeEntry.artefactos}</TableCell>
+                <TableCell align="left">{timeEntry.retos}</TableCell>
+                <TableCell align="left">{timeEntry.charlas}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  );
+};
+
+export { RadarTimelineLinks };

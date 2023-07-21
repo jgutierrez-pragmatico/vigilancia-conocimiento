@@ -21,8 +21,9 @@ import { Button, DialogActions, DialogContent } from '@material-ui/core';
 import LinkIcon from '@material-ui/icons/Link';
 import { Link, MarkdownContent } from '@backstage/core-components';
 import { isValidUrl } from '../../utils/components';
-import type { EntrySnapshot } from '../../utils/types';
+import type { EntrySnapshot, EntrySnapshotLinks } from '../../utils/types';
 import { RadarTimeline } from '../RadarTimeline';
+import { RadarTimelineLinks } from '../RadarTimeline/RadarTimeline';
 
 export type Props = {
   open: boolean;
@@ -32,6 +33,7 @@ export type Props = {
   timeline?: EntrySnapshot[];
   url?: string;
   links?: Array<{ url: string; title: string }>;
+  artefactos?: EntrySnapshotLinks[];
 };
 
 const RadarDescription = (props: Props): JSX.Element => {
@@ -42,7 +44,16 @@ const RadarDescription = (props: Props): JSX.Element => {
     return isValidUrl(url) || Boolean(links && links.length > 0);
   }
 
-  const { open, onClose, title, description, timeline, url, links } = props;
+  const {
+    open,
+    onClose,
+    title,
+    description,
+    timeline,
+    url,
+    links,
+    artefactos,
+  } = props;
 
   return (
     <Dialog data-testid="radar-description" open={open} onClose={onClose}>
@@ -51,6 +62,8 @@ const RadarDescription = (props: Props): JSX.Element => {
       </DialogTitle>
       <DialogContent dividers>
         <MarkdownContent content={description} />
+        <RadarTimelineLinks artefactos={artefactos} />
+        <br />
         <RadarTimeline timeline={timeline} />
       </DialogContent>
       {showDialogActions(url, links) && (

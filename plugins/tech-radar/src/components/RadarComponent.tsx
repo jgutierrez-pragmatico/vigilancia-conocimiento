@@ -123,6 +123,14 @@ export function RadarComponent(props: TechRadarComponentProps) {
             moved: e.moved,
           };
         }),
+        artefactos: entry.artefactos?.map(e => {
+          return {
+            habilitacion: e.habilitacion,
+            artefactos: e.artefactos,
+            charlas: e.charlas,
+            retos: e.retos,
+          };
+        }),
         moved: entry.timeline[0].moved,
         description: entry.description || entry.timeline[0].description,
         url: entry.url,

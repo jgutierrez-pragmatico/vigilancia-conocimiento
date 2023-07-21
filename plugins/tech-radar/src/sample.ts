@@ -50,12 +50,13 @@ export const mock: TechRadarLoaderResponse = {
   rings,
 };
 
-export class SampleTechRadarApi implements TechRadarApi {
+export class SampleTechRadarApi2 implements TechRadarApi {
   async load() {
     try {
       const response = await fetch(
-        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries',
+        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries?format=table',
       );
+      // console.log(response)
       const data = await response.json();
       const dataReplace = data
         .filter(
@@ -71,6 +72,62 @@ export class SampleTechRadarApi implements TechRadarApi {
           return obj;
         });
 
+      mock.entries = dataReplace;
+    } catch (e) {
+      // console.warn(e);
+    }
+    return mock;
+  }
+}
+
+export class SampleTechRadarApi implements TechRadarApi {
+  async load() {
+    try {
+      const response = await fetch(
+        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries?format=table',
+      );
+      const data = await response.json();
+      const dataReplace = data
+        .filter(
+          (obj: any) =>
+            obj.fase_nombre &&
+            obj.kc_nombre &&
+            obj.chapter_nombre !== 'undefined',
+        )
+        .map((obj: any) => {
+          return {
+            timeline: [
+              {
+                moved: 0,
+                ringId: obj.fase_nombre,
+                date: new Date('2020-08-06'),
+                description: obj.tipificacion,
+              },
+            ],
+            key: obj.id_radar,
+            id: obj.id_radar,
+            title: obj.tema_principal,
+            quadrant: obj.kc_nombre
+              .replace(/\s/g, '')
+              .toLocaleLowerCase('en-US'),
+            links: [
+              {
+                title: 'code',
+                url: obj.ruta_habilitacion,
+              },
+            ],
+            description: obj.descripcion,
+            artefactos: [
+              {
+                habilitacion: obj.ruta_habilitacion,
+                artefactos: obj.artefacto,
+                charlas: obj.charla,
+                retos: obj.reto_asincrono,
+              },
+            ],
+          };
+        });
+      // console.log(dataReplace);
       mock.entries = dataReplace;
     } catch (e) {
       // console.warn(e);

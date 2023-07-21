@@ -142,6 +142,10 @@ export interface RadarEntry {
    */
   timeline: Array<RadarEntrySnapshot>;
   /**
+   * Se utiliza para cargar los artefactos {@link RadarRing}
+   */
+  artefactos?: Array<EntrySnapshotLinks>;
+  /**
    * Description of the Entry
    */
   description?: string;
@@ -173,6 +177,25 @@ export interface RadarEntrySnapshot {
    * Indicates trend compared to previous snapshot
    */
   moved?: MovedState;
+}
+
+export interface EntrySnapshotLinks {
+  /**
+   * Ruta de habilitacion
+   */
+  habilitacion?: string;
+  /**
+   * artefactos
+   */
+  artefactos?: string;
+  /**
+   * charlas
+   */
+  charlas?: string;
+  /**
+   * retos
+   */
+  retos?: string;
 }
 
 /**

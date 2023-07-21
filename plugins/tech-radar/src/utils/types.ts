@@ -68,6 +68,7 @@ export type Entry = {
   description?: string;
   active?: boolean;
   timeline?: Array<EntrySnapshot>;
+  artefactos?: Array<EntrySnapshotLinks>;
 };
 
 export type EntrySnapshot = {
@@ -75,6 +76,13 @@ export type EntrySnapshot = {
   ring: Ring;
   description?: string;
   moved?: MovedState;
+};
+
+export type EntrySnapshotLinks = {
+  habilitacion?: string;
+  artefactos?: string;
+  charlas?: string;
+  retos?: string;
 };
 
 // The same as Entry except quadrant/ring are declared by their string ID instead of being the actual objects
