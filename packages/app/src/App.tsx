@@ -162,7 +162,7 @@ const app = createApp({
 
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<Navigate to="form" />} />
+    <Route path="/" element={<Navigate to="tech-radar" />} />
     {/* TODO(rubenl): Move this to / once its more mature and components exist */}
     <Route path="/home" element={<HomepageCompositionRoot />}>
       {homePage}

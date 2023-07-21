@@ -90,7 +90,7 @@ describe('RadarPage', () => {
 
     await expect(findByTestId('tech-radar-svg')).resolves.toBeInTheDocument();
     expect(
-      getByText('Pick the recommended technologies for your projects'),
+      getByText('Cuadrantes de vigilancia de conocimiento'),
     ).toBeInTheDocument();
     expect(mockClient.load).toHaveBeenCalledWith(undefined);
   });

@@ -63,6 +63,16 @@ const makeBlip = (color: string, moved?: number) => {
   return blip;
 };
 
+const makeBlipURL = (color: string, url?: string) => {
+  const style = { fill: color };
+
+  let blip = <circle r={9} style={style} />;
+  if (!url) {
+    blip = <path d="M -11,-5 11,-5 0,13 z" style={style} />; // triangle pointing down
+  }
+  return blip;
+};
+
 const RadarEntry = (props: Props): JSX.Element => {
   const classes = useStyles(props);
   const [open, setOpen] = React.useState(false);
@@ -83,7 +93,7 @@ const RadarEntry = (props: Props): JSX.Element => {
     onClick,
   } = props;
 
-  const blip = makeBlip(color, moved);
+  const blip = makeBlipURL(color, url);
 
   const handleClickOpen = () => {
     setOpen(true);

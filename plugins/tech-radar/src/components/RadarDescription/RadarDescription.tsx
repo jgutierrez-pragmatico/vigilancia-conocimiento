@@ -55,18 +55,19 @@ const RadarDescription = (props: Props): JSX.Element => {
       </DialogContent>
       {showDialogActions(url, links) && (
         <DialogActions>
-          {links?.map(link => (
-            <Button
-              component={Link}
-              to={link.url}
-              onClick={onClose}
-              color="primary"
-              startIcon={<LinkIcon />}
-              key={link.url}
-            >
-              {link.title}
-            </Button>
-          ))}
+          {url &&
+            links?.map(link => (
+              <Button
+                component={Link}
+                to={link.url}
+                onClick={onClose}
+                color="primary"
+                startIcon={<LinkIcon />}
+                key={link.url}
+              >
+                {link.title}
+              </Button>
+            ))}
           {isValidUrl(url) && (
             <Button
               component={Link}
@@ -76,7 +77,7 @@ const RadarDescription = (props: Props): JSX.Element => {
               startIcon={<LinkIcon />}
               key={url}
             >
-              LEARN MORE
+              Más información
             </Button>
           )}
         </DialogActions>
