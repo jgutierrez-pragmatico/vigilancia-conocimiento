@@ -20,7 +20,6 @@ import React, { useEffect } from 'react';
 import useAsync from 'react-use/lib/useAsync';
 import { RadarEntry, techRadarApiRef, TechRadarLoaderResponse } from '../api';
 import Radar from '../components/Radar';
-import { Entry } from '../utils/types';
 
 const useTechRadarLoader = (id: string | undefined) => {
   const errorApi = useApi(errorApiRef);

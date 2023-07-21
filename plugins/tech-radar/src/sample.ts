@@ -119,15 +119,20 @@ export class SampleTechRadarApi implements TechRadarApi {
             description: obj.descripcion,
             artefactos: [
               {
-                habilitacion: obj.ruta_habilitacion,
-                artefactos: obj.artefacto,
+                habilitacion: obj.ruta_habilitacion
+                  ?.split('https://')
+                  .filter(Boolean)
+                  .map((url: string) => `https://${url}`),
+                artefactos: obj.artefacto
+                  ?.split('https://')
+                  .filter(Boolean)
+                  .map((url: string) => `https://${url}`),
                 charlas: obj.charla,
                 retos: obj.reto_asincrono,
               },
             ],
           };
         });
-      // console.log(dataReplace);
       mock.entries = dataReplace;
     } catch (e) {
       // console.warn(e);

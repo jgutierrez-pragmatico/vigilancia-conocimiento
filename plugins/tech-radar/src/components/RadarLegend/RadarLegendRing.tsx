@@ -69,6 +69,7 @@ export const RadarLegendRing = ({
                 active={entry.active}
                 links={entry.links ?? []}
                 timeline={entry.timeline ?? []}
+                artefactos={entry.artefactos ?? []}
               />
             </li>
           ))}

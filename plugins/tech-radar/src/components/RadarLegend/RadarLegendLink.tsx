@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { WithLink } from '../../utils/components';
 import { RadarDescription } from '../RadarDescription';
-import type { EntrySnapshot } from '../../utils/types';
+import type { EntrySnapshot, EntrySnapshotLinks } from '../../utils/types';
 
 type RadarLegendLinkProps = {
   url?: string;
@@ -27,7 +27,8 @@ type RadarLegendLinkProps = {
   classes: ClassNameMap<string>;
   active?: boolean;
   links: Array<{ url: string; title: string }>;
-  timeline: EntrySnapshot[];
+  timeline?: EntrySnapshot[];
+  artefactos?: EntrySnapshotLinks[];
 };
 
 export const RadarLegendLink = ({
@@ -38,6 +39,7 @@ export const RadarLegendLink = ({
   active,
   links,
   timeline,
+  artefactos,
 }: RadarLegendLinkProps) => {
   const [open, setOpen] = React.useState(false);
 
@@ -52,7 +54,6 @@ export const RadarLegendLink = ({
   const toggle = () => {
     setOpen(!open);
   };
-
   if (description) {
     return (
       <>
@@ -80,6 +81,7 @@ export const RadarLegendLink = ({
             description={description}
             timeline={timeline ? timeline : []}
             links={links}
+            artefactos={artefactos ? artefactos : []}
           />
         )}
       </>

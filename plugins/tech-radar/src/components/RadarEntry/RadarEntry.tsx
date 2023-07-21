@@ -18,7 +18,7 @@ import React from 'react';
 import { makeStyles, Theme } from '@material-ui/core';
 import { WithLink } from '../../utils/components';
 import { RadarDescription } from '../RadarDescription';
-import type { EntrySnapshot } from '../../utils/types';
+import type { EntrySnapshot, EntrySnapshotLinks } from '../../utils/types';
 
 export type Props = {
   x: number;
@@ -30,6 +30,7 @@ export type Props = {
   moved?: number;
   description?: string;
   timeline?: EntrySnapshot[];
+  artefactos?: EntrySnapshotLinks[];
   title?: string;
   onMouseEnter?: (event: React.MouseEvent<SVGGElement, MouseEvent>) => void;
   onMouseLeave?: (event: React.MouseEvent<SVGGElement, MouseEvent>) => void;
@@ -63,11 +64,16 @@ const makeBlip = (color: string, moved?: number) => {
   return blip;
 };
 
-const makeBlipURL = (color: string, url?: string) => {
+const makeBlipURL = (color: string, artefactos?: EntrySnapshotLinks[]) => {
   const style = { fill: color };
-
   let blip = <circle r={9} style={style} />;
-  if (!url) {
+
+  if (
+    !artefactos[0].artefactos ||
+    !artefactos[0].charlas ||
+    !artefactos[0].habilitacion ||
+    !artefactos[0].retos
+  ) {
     blip = <path d="M -11,-5 11,-5 0,13 z" style={style} />; // triangle pointing down
   }
   return blip;
@@ -81,6 +87,7 @@ const RadarEntry = (props: Props): JSX.Element => {
     moved,
     description,
     timeline,
+    artefactos,
     title,
     color,
     url,
@@ -93,7 +100,7 @@ const RadarEntry = (props: Props): JSX.Element => {
     onClick,
   } = props;
 
-  const blip = makeBlipURL(color, url);
+  const blip = makeBlipURL(color, artefactos);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -123,6 +130,7 @@ const RadarEntry = (props: Props): JSX.Element => {
           title={title ? title : 'no title'}
           description={description ? description : 'no description'}
           timeline={timeline ? timeline : []}
+          artefactos={artefactos ? artefactos : []}
           url={url}
           links={links}
         />

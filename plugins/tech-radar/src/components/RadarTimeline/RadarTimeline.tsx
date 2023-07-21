@@ -127,7 +127,11 @@ const RadarTimelineLinks = (props: Props): JSX.Element => {
             )}
             {artefactos?.map(timeEntry => (
               <TableRow>
-                <TableCell align="left">{timeEntry.habilitacion}</TableCell>
+                <TableCell align="left">
+                  <a href={timeEntry.habilitacion} target="_blank">
+                    {timeEntry.habilitacion}
+                  </a>
+                </TableCell>
                 <TableCell align="left">{timeEntry.artefactos}</TableCell>
                 <TableCell align="left">{timeEntry.retos}</TableCell>
                 <TableCell align="left">{timeEntry.charlas}</TableCell>
