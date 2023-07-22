@@ -26,10 +26,14 @@ const rings = new Array<RadarRing>();
 
 rings.push({ id: 'Explotando', name: 'Explotando', color: '#5BA300' });
 rings.push({ id: 'Escalando', name: 'Escalando', color: '#009EB0' });
-rings.push({ id: 'Explorando', name: 'Explorando', color: '#C7BA00' });
 rings.push({
   id: 'Experimientando',
   name: 'Experimientando',
+  color: '#C7BA00',
+});
+rings.push({
+  id: 'Explorando',
+  name: 'Explorando',
   color: '#E09B96',
 });
 
