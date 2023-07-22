@@ -23,14 +23,15 @@ import {
 } from './api';
 
 const rings = new Array<RadarRing>();
+
+rings.push({ id: 'Explotando', name: 'Explotando', color: '#5BA300' });
+rings.push({ id: 'Escalando', name: 'Escalando', color: '#009EB0' });
+rings.push({ id: 'Explorando', name: 'Explorando', color: '#C7BA00' });
 rings.push({
   id: 'Experimientando',
   name: 'Experimientando',
-  color: '#5BA300',
+  color: '#E09B96',
 });
-rings.push({ id: 'Escalando', name: 'Escalando', color: '#009EB0' });
-rings.push({ id: 'Explorando', name: 'Explorando', color: '#C7BA00' });
-rings.push({ id: 'Explotando', name: 'Explotando', color: '#E09B96' });
 
 const quadrants = new Array<RadarQuadrant>();
 // quadrants.push({ id: 'infrastructure', name: 'Infrastructure' });

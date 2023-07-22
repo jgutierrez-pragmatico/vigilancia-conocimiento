@@ -22,7 +22,6 @@ import LinkIcon from '@material-ui/icons/Link';
 import { Link, MarkdownContent } from '@backstage/core-components';
 import { isValidUrl } from '../../utils/components';
 import type { EntrySnapshot, EntrySnapshotLinks } from '../../utils/types';
-import { RadarTimeline } from '../RadarTimeline';
 import { RadarTimelineLinks } from '../RadarTimeline/RadarTimeline';
 
 export type Props = {
