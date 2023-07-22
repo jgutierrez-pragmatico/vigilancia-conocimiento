@@ -68,7 +68,6 @@ const RadarDescription = (props: Props): JSX.Element => {
         <MarkdownContent content={description} />
         <RadarTimelineLinks artefactos={artefactos} />
         <br />
-        <RadarTimeline timeline={timeline} />
       </DialogContent>
       {showDialogActions(url, links) && (
         <DialogActions>
