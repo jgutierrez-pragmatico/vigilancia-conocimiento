@@ -38,15 +38,14 @@ rings.push({
 });
 
 const quadrants = new Array<RadarQuadrant>();
-// quadrants.push({ id: 'infrastructure', name: 'Infrastructure' });
-quadrants.push({ id: 'powerfulteams', name: 'Powerful teams' });
+quadrants.push({ id: 'computerscience', name: 'Computer Science' });
 quadrants.push({ id: 'datascience', name: 'Data Science' });
 quadrants.push({
   id: 'people-centereddesign',
   name: 'People - Centered Design',
 });
-quadrants.push({ id: 'computerscience', name: 'Computer Science' });
 
+quadrants.push({ id: 'powerfulteams', name: 'Powerful teams' });
 const entries = new Array<RadarEntry>();
 
 export const mock: TechRadarLoaderResponse = {
