@@ -58,7 +58,7 @@ export class SampleTechRadarApi2 implements TechRadarApi {
   async load() {
     try {
       const response = await fetch(
-        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries?format=table',
+        'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=table',
       );
       // console.log(response)
       const data = await response.json();
@@ -88,7 +88,7 @@ export class SampleTechRadarApi implements TechRadarApi {
   async load() {
     try {
       const response = await fetch(
-        'https://ig473nnd05.execute-api.us-east-1.amazonaws.com/dev/entries?format=table',
+        'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=table&limit=1000',
       );
       const data = await response.json();
       const dataReplace = data
