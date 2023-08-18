@@ -60,8 +60,9 @@ export class SampleTechRadarApi2 implements TechRadarApi {
       const response = await fetch(
         'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=radar&limit=1000',
       );
-      // console.log(response)
+      console.log(response)
       const data = await response.json();
+      console.log(data.entries);
       const dataReplace = data.entries
         .filter(
           (obj: any) =>
@@ -91,6 +92,7 @@ export class SampleTechRadarApi implements TechRadarApi {
         'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=radar&limit=1000',
       );
       const data = await response.json();
+      console.log(data.entries);
       const dataReplace = data.entries
         .filter(
           (obj: any) =>
