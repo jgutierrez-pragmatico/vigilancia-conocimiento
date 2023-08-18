@@ -60,10 +60,12 @@ export class SampleTechRadarApi2 implements TechRadarApi {
       const response = await fetch(
         'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=radar&limit=1000',
       );
-      console.log(response)
-      const data = await response.json();
-      console.log(data.entries);
-      const dataReplace = data.entries
+      console.log('Respose: ', response);
+      console.log('Respose json: ', response.json());
+      console.log('Respose Entries: ', response.entries);
+      const data = await response.entries.json();
+
+      const dataReplace = data
         .filter(
           (obj: any) =>
             obj.key && obj.timeline[0].ringId && obj.quadrant.trim() !== '',
@@ -91,9 +93,8 @@ export class SampleTechRadarApi implements TechRadarApi {
       const response = await fetch(
         'https://nietwmqv32.execute-api.us-east-1.amazonaws.com/production/entries?format=radar&limit=1000',
       );
-      const data = await response.json();
-      console.log(data.entries);
-      const dataReplace = data.entries
+      const data = await response.entries.json();
+      const dataReplace = data
         .filter(
           (obj: any) =>
             obj.fase_nombre &&
